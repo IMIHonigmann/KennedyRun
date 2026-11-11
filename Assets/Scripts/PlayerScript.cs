@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenuController.IsPaused) return;
+
         float sidewaysInput = Input.GetAxisRaw("Horizontal");
 
         if (sidewaysInput != 0 && lastSidewaysInput == 0)
