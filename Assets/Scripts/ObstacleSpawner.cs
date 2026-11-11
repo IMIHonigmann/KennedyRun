@@ -3,28 +3,26 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject obstacle;
-    [SerializeField] private GameObject player;
-    [SerializeField] private float obstacleRate;
-    [SerializeField] private float obstacleSpawnDist;
-    private bool hasSpawned;
+    [SerializeField] private Transform player;
+    [SerializeField] private float obstacleRate = 10f;
+    [SerializeField] private float obstacleSpawnDist = 40f;
+    [SerializeField] private float laneDistance = 7.5f;
+
+    private float nextSpawnZ;
+
     void Start()
     {
-
+        nextSpawnZ = player.position.z + obstacleRate;
     }
 
     void Update()
     {
-        float obstacleTimer = Mathf.Abs(player.transform.position.z) % obstacleRate;
-
-        if (obstacleTimer > obstacleRate - 1 && hasSpawned == false)
+        while (player.position.z >= nextSpawnZ)
         {
-            Instantiate(obstacle, new Vector3(Mathf.Round(Random.Range(-1.49f, 1.49f)) * 7.5f, 0, player.transform.position.z + obstacleSpawnDist), Quaternion.identity);
-            hasSpawned = true;
+            int lane = Random.Range(-1, 2);
+            Vector3 pos = new Vector3(lane * laneDistance, 0f, nextSpawnZ + obstacleSpawnDist);
+            GameObject o = Instantiate(obstacle, pos, Quaternion.identity);
+            nextSpawnZ += obstacleRate;
         }
-        if (obstacleTimer < 1)
-        {
-            hasSpawned = false;
-        }
-        Debug.Log(obstacleTimer);
     }
 }
