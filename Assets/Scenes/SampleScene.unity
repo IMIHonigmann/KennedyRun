@@ -319,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25881857, y: -0.000000018957763, z: 0.000000020506523, w: 0.965926}
-  m_LocalPosition: {x: 0, y: 7.65, z: -9.82}
+  m_LocalPosition: {x: 0, y: 7.65, z: -9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -834,6 +834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
   player: {fileID: 2098677655}
+  despawnOffset: 20
 --- !u!1 &1120954025
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,9 +930,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   obstacle: {fileID: 1112649200}
-  player: {fileID: 2098677655}
+  player: {fileID: 2098677656}
   obstacleRate: 50
   obstacleSpawnDist: 100
+  laneDistance: 7.5
 --- !u!1 &1245356048
 GameObject:
   m_ObjectHideFlags: 0
