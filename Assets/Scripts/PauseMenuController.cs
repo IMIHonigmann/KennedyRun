@@ -42,7 +42,7 @@ public class PauseMenuController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameOverMenuController.IsGameOver)
             SetPaused(!IsPaused);
     }
 

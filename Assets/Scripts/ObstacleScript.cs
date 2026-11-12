@@ -6,11 +6,13 @@ public class ObstacleScript : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private float despawnOffset;
     [SerializeField] private bool allowDespawn = true;
+    [SerializeField] private GameManagerScript gameManager;
 
     // Called by ObstacleSpawner right after spawning, since a prefab can't reference scene objects.
-    public void Init(GameObject player)
+    public void Init(GameObject player, GameManagerScript gameManager)
     {
         this.player = player;
+        this.gameManager = gameManager;
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class ObstacleScript : MonoBehaviour
         if (other.attachedRigidbody != null && other.attachedRigidbody.gameObject == player)
         {
             Debug.Log("Collided with " + other.gameObject);
+            gameManager.StartGameOver();
         }
     }
 }

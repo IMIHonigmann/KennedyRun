@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="gameover-root" style="flex-grow: 1; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.6);">
+        <ui:Label text="You kicked the bucket :)" style="-unity-text-align: upper-center; font-size: 32px; color: rgb(255, 0, 0); margin-bottom: 20px;"/>
+        <ui:Label text="Your score:" name="score-field" style="-unity-text-align: upper-center; font-size: 48px; color: rgb(255, 255, 255); margin-bottom: 20px;"/>
+        <ui:Button name="restart-button" text="Restart" style="width: 200px; height: 40px; font-size: 18px;"/>
+        <ui:Button name="exit-button" text="Exit" style="width: 200px; height: 40px; font-size: 18px;"/>
+    </ui:VisualElement>
+</ui:UXML>
