@@ -8,11 +8,17 @@ public class hudController : MonoBehaviour
     private PanelRenderer panelRenderer;
     private int lastUIVersion;
     private Label scoreLabel;
+    private Label highScoreLabel;
 
     void OnEnable()
     {
         panelRenderer = GetComponent<PanelRenderer>();
         panelRenderer.RegisterUIReloadCallback(OnUIReloaded);
+    }
+
+    void OnDisable()
+    {
+        panelRenderer.UnregisterUIReloadCallback(OnUIReloaded);
     }
 
     void OnUIReloaded(PanelRenderer renderer, VisualElement root, int version)
@@ -21,6 +27,9 @@ public class hudController : MonoBehaviour
         lastUIVersion = version;
 
         scoreLabel = root.Q<Label>("score-field");
+        highScoreLabel = root.Q<Label>("highscore-field");
+        int highScore = PlayerPrefs.GetInt("highscore");
+        highScoreLabel.text = "Highscore: " + highScore;
     }
 
     void Update()

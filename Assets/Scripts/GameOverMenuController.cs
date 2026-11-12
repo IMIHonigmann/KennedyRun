@@ -70,5 +70,11 @@ public class GameOverMenuController : MonoBehaviour
             scoreLabel.text = "Your Score: " + finalScore;
         if (gameOverRoot != null)
             gameOverRoot.style.display = gameOver ? DisplayStyle.Flex : DisplayStyle.None;
+
+        int lastHighscore = PlayerPrefs.GetInt("highscore");
+        if (finalScore > lastHighscore)
+        {
+            PlayerPrefs.SetInt("highscore", finalScore);
+        }
     }
 }
