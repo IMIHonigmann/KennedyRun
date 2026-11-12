@@ -1,8 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject obstacle;
+    [SerializeField] private ObstacleScript obstacle; // drag the obstacle PREFAB here
     [SerializeField] private Transform player;
     [SerializeField] private float obstacleRate = 10f;
     [SerializeField] private float obstacleSpawnDist = 40f;
@@ -28,7 +29,8 @@ public class GameManagerScript : MonoBehaviour
         {
             int lane = Random.Range(-1, 2);
             Vector3 pos = new Vector3(lane * laneDistance, 0f, nextSpawnZ + obstacleSpawnDist);
-            Instantiate(obstacle, pos, Quaternion.identity);
+            ObstacleScript o = Instantiate(obstacle, pos, Quaternion.identity);
+            o.Init(player.gameObject);
             nextSpawnZ += obstacleRate;
         }
     }
