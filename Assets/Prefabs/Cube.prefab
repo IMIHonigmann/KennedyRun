@@ -128,3 +128,7 @@ MonoBehaviour:
   player: {fileID: 0}
   despawnOffset: 20
   allowDespawn: 1
+  gameManager: {fileID: 0}
+  theyDontKnowMeSonClip: {fileID: 8300000, guid: afe763273a5c915e8832448e90ef733a, type: 3}
+  perfectDodgeDistance: 5
+  laneHalfWidth: 3.75

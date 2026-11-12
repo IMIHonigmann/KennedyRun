@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float laneSwitchSpeed = 30f; // how fast it slides to the new lane
     [SerializeField] private float rampUpSpeed = 0.01f;
 
+
     int currentLane = 0;
     float lastSidewaysInput = 0;
 
