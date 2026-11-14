@@ -126,9 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
   despawnOffset: 20
+  sonClipDelay: 0.175
   allowDespawn: 1
   gameManager: {fileID: 0}
+  explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   theyDontKnowMeSonClip: {fileID: 8300000, guid: afe763273a5c915e8832448e90ef733a, type: 3}
+  explosionSound: {fileID: 8300000, guid: 5d825a4e8b014d6a8bbfd68e01416806, type: 3}
   perfectDodgeDistance: 5
   laneHalfWidth: 3.75
   launchForce: 50

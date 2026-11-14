@@ -1,13 +1,16 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
     [SerializeField] private float despawnOffset;
+    [SerializeField] private float sonClipDelay = 0.5f; // seconds after the explosion
     [SerializeField] private bool allowDespawn = true;
     [SerializeField] private GameManagerScript gameManager;
+    [SerializeField] private GameObject explosion;
 
     [SerializeField] private AudioClip theyDontKnowMeSonClip;
+    [SerializeField] private AudioClip explosionSound;
     [SerializeField] private float perfectDodgeDistance;
     [SerializeField] private float laneHalfWidth = 3.75f;
 
@@ -28,6 +31,13 @@ public class ObstacleScript : MonoBehaviour
         this.gameManager = gameManager;
         playerAudio = Player.Instance.GetComponent<AudioSource>();
         obstacleCollider = GetComponent<Collider>();
+    }
+
+    private static IEnumerator PlayDelayed(AudioSource source, AudioClip clip, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (!GameOverMenuController.IsGameOver)
+            source.PlayOneShot(clip);
     }
 
     private void LaunchAway()
@@ -63,8 +73,12 @@ public class ObstacleScript : MonoBehaviour
             dodgeResolved = true;
             if (wasInPlayersLaneWhenClose && !GameOverMenuController.IsGameOver)
             {
-                playerAudio.PlayOneShot(theyDontKnowMeSonClip);
+                bool rareLoud = Random.Range(0, 1000) == 0;
+                playerAudio.PlayOneShot(explosionSound, rareLoud ? 2 : 1);
+                Player.Instance.StartCoroutine(PlayDelayed(playerAudio, theyDontKnowMeSonClip, sonClipDelay));
                 LaunchAway();
+                GameObject o = Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(o, 5f);
             }
         }
 
