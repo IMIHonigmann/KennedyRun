@@ -1,11 +1,19 @@
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float laneDistance = 7.5f;   // distance between lanes
     [SerializeField] private float laneSwitchSpeed = 30f; // how fast it slides to the new lane
     [SerializeField] private float rampUpSpeed = 0.01f;
+
+    public float MoveSpeed => moveSpeed;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
 
     int currentLane = 0;

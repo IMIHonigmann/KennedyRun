@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class InfinitePlaneScript : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
     [SerializeField] private GameObject otherPlane;
     [SerializeField] private float planeLength = 10f;
 
@@ -13,7 +12,7 @@ public class InfinitePlaneScript : MonoBehaviour
 
     void Update()
     {
-        float playerZ = player.transform.position.z;
+        float playerZ = Player.Instance.transform.position.z;
         float myZ = transform.position.z;
         float otherZ = otherPlane.transform.position.z;
 
